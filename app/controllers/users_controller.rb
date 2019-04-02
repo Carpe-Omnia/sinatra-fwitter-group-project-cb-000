@@ -3,9 +3,12 @@ class UsersController < ApplicationController
   set :views, Proc.new { File.join(root, "../views/") }
 
   get '/login' do
+<<<<<<< HEAD
     if Helpers.is_logged_in?(session)
       redirect to '/tweets'
     end
+=======
+>>>>>>> e498e2874dc1c65b9572a3cc6e96705b3cab98ce
     @error = ""
     erb :'users/login'
   end
@@ -28,11 +31,16 @@ class UsersController < ApplicationController
     if Helpers.is_logged_in?(session)
       erb :'users/logout'
     else
+<<<<<<< HEAD
       redirect to '/'
+=======
+      erb :'index'
+>>>>>>> e498e2874dc1c65b9572a3cc6e96705b3cab98ce
     end
   end
 
   post '/logout' do
+<<<<<<< HEAD
     if Helpers.is_logged_in?(session)
       session.clear
       redirect to '/'
@@ -45,6 +53,13 @@ class UsersController < ApplicationController
     if Helpers.is_logged_in?(session)
       redirect to '/tweets'
     end
+=======
+    session.clear
+    erb :'index'
+  end
+
+  get '/signup' do
+>>>>>>> e498e2874dc1c65b9572a3cc6e96705b3cab98ce
     @error = ""
     erb :'users/create_user'
   end
@@ -55,17 +70,26 @@ class UsersController < ApplicationController
       @error += "Username already in use"
     end
     if @error != ""
+<<<<<<< HEAD
       #erb :'users/create_user'
       redirect to '/signup'
     else
       dude = User.create(username: params[:username], password: params[:password], email: params[:email], slug: slugify(params[:username]))
+=======
+      erb :'users/create_user'
+    else
+      dude = User.create(username: params[:username], password: params[:password], email: params[:email])
+>>>>>>> e498e2874dc1c65b9572a3cc6e96705b3cab98ce
       session[:user_id] = dude.id
       redirect to '/tweets'
     end
   end
+<<<<<<< HEAD
   get '/users/:slug' do
     @user = User.find_by(slug: params[:slug])
     erb :'users/show'
   end
+=======
+>>>>>>> e498e2874dc1c65b9572a3cc6e96705b3cab98ce
 
 end

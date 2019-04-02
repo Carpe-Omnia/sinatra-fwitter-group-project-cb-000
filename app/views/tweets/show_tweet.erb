@@ -13,6 +13,10 @@
 <% if Helpers.is_logged_in?(session) && @tweet != nil && @tweet.user_id == session[:user_id] %>
   <form action= <%= "#{@tweet.id}/delete" %> method="post" >
     Delete this tweet
+<<<<<<< HEAD
     <input type="submit" name="Delete Tweet" id="Delete Tweet">
+=======
+    <input type="submit" name="delete" id="submit">
+>>>>>>> e498e2874dc1c65b9572a3cc6e96705b3cab98ce
   </form>
 <% end %>
